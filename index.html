@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONE DAY OF FIGHTER PRO</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--bg:#0b0b0b;
+--red:#ff2040;
+--gold:#ffd700;
+--card:rgba(255,255,255,0.06);
+--line:rgba(255,255,255,0.12);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+body{
+background:var(--bg);
+color:#fff;
+font-family:'Roboto Condensed',sans-serif;
+}
+
+/* HEADER */
+header{
+position:fixed;
+top:0;left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px 22px;
+background:rgba(0,0,0,0.85);
+backdrop-filter: blur(10px);
+z-index:1000;
+border-bottom:1px solid var(--line);
+}
+
+.logo{
+font-family:'Oswald';
+font-weight:700;
+color:var(--red);
+letter-spacing:1px;
+cursor:pointer;
+}
+
+nav a{
+color:#fff;
+margin:0 12px;
+text-decoration:none;
+font-size:14px;
+opacity:0.8;
+}
+nav a:hover{opacity:1;color:var(--gold)}
+
+.burger{display:none;cursor:pointer;font-size:26px}
+
+/* SECTIONS */
+section{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:100px 20px;
+}
+
+.container{max-width:1100px;width:100%}
+
+h1{
+font-family:'Oswald';
+font-size:64px;
+text-align:center;
+color:var(--red);
+letter-spacing:2px;
+}
+
+h2{
+font-family:'Oswald';
+color:var(--gold);
+margin-bottom:20px;
+font-size:32px;
+}
+
+p{opacity:0.9;line-height:1.5}
+
+/* HERO */
+.hero-box{text-align:center}
+
+.badges{
+display:flex;
+gap:15px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:25px;
+}
+
+.badge{
+background:var(--card);
+padding:15px 18px;
+border:1px solid var(--line);
+border-radius:12px;
+transition:.3s;
+}
+.badge:hover{
+transform:translateY(-5px);
+box-shadow:0 0 20px rgba(255,32,64,0.4);
+}
+
+button{
+background:var(--red);
+border:none;
+padding:12px 18px;
+color:#fff;
+cursor:pointer;
+border-radius:10px;
+margin-top:20px;
+font-weight:600;
+}
+
+button:hover{background:#ff4d66}
+
+/* CARDS */
+.card{
+background:var(--card);
+border:1px solid var(--line);
+padding:16px;
+border-radius:12px;
+margin:10px 0;
+transition:.3s;
+}
+.card:hover{
+transform:scale(1.02);
+border-color:var(--red);
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+/* FORM */
+input,select{
+width:100%;
+padding:10px;
+margin:6px 0;
+background:#111;
+border:1px solid #333;
+color:#fff;
+border-radius:8px;
+}
+
+/* TIMELINE */
+.timeline{
+border-left:2px solid var(--red);
+padding-left:20px;
+}
+.time-item{
+margin:20px 0;
+position:relative;
+}
+.time-item::before{
+content:"";
+position:absolute;
+left:-28px;
+width:12px;height:12px;
+background:var(--gold);
+border-radius:50%;
+top:5px;
+}
+
+/* VIDEO */
+.video-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+iframe{
+width:100%;
+height:200px;
+border-radius:12px;
+border:none;
+}
+
+/* FADE */
+.fade{
+opacity:0;
+transform:translateY(30px);
+transition:1s;
+}
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ADMIN */
+#adminBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:var(--gold);
+color:#000;
+padding:10px 14px;
+border-radius:50px;
+cursor:pointer;
+font-weight:bold;
+z-index:2000;
+}
+
+#adminPanel{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#111;
+border:1px solid var(--red);
+padding:20px;
+display:none;
+z-index:3000;
+width:320px;
+border-radius:12px;
+}
+
+@media(max-width:768px){
+nav{display:none}
+h1{font-size:40px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo" ondblclick="openAdmin()">ONE DAY OF FIGHTER</div>
+<nav>
+<a href="#about">О проекте</a>
+<a href="#vote">Голосование</a>
+<a href="#day">День</a>
+<a href="#video">Видео</a>
+<a href="#final">Финал</a>
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="fade">
+<div class="container hero-box">
+<h1 contenteditable="true">ONE DAY OF FIGHTER</h1>
+<p contenteditable="true">Один день из жизни профессионального бойца ММА</p>
+
+<div class="badges">
+<div class="badge">🎥 Реальные тренировки</div>
+<div class="badge">🥊 Настоящие испытания</div>
+<div class="badge">💪 Новый уровень силы</div>
+</div>
+
+<button onclick="alert('Переход к выпуску')">Смотреть последний выпуск</button>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="fade">
+<div class="container">
+<h2>О проекте</h2>
+<p contenteditable="true">
+ONE DAY OF FIGHTER — это погружение в жизнь профессиональных бойцов ММА.
+Каждый выпуск — новый спортсмен, новая школа и реальные тренировки без постановки.
+Цель проекта — показать настоящую работу бойца и стать сильнее самому.
+</p>
+</div>
+</section>
+
+<!-- VOTE -->
+<section id="vote" class="fade">
+<div class="container">
+<h2>Выбор бойца</h2>
+
+<select id="fighter">
+<option>Хабиб Нурмагомедов</option>
+<option>Ислам Махачев</option>
+<option>Джон Джонс</option>
+<option>Конор МакГрегор</option>
+</select>
+
+<select id="style">
+<option>Борьба</option>
+<option>Ударка</option>
+<option>ММА</option>
+</select>
+
+<select id="team">
+<option>AKA</option>
+<option>ATT</option>
+<option>AKA Thailand</option>
+</select>
+
+<select id="challenge">
+<option>Кардио ад</option>
+<option>Спарринги</option>
+<option>Техника до отказа</option>
+</select>
+
+<button onclick="vote()">Проголосовать</button>
+</div>
+</section>
+
+<!-- DAY -->
+<section id="day" class="fade">
+<div class="container">
+<h2>День бойца</h2>
+
+<div class="timeline">
+<div class="time-item">06:00 — Кардио и весогонка</div>
+<div class="time-item">10:00 — Техника и борьба</div>
+<div class="time-item">15:00 — Спарринги</div>
+<div class="time-item">19:00 — Восстановление и интервью</div>
+</div>
+</div>
+</section>
+
+<!-- VIDEO -->
+<section id="video" class="fade">
+<div class="container">
+<h2>Видео</h2>
+
+<div class="video-grid">
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+</div>
+
+<button>Все выпуски</button>
+</div>
+</section>
+
+<!-- FINAL -->
+<section id="final" class="fade">
+<div class="container" style="text-align:center">
+<h2>Финал</h2>
+<p>Один день. Один боец. Один новый опыт.</p>
+
+<input id="email" placeholder="Email">
+<button onclick="subscribe()">Подписаться</button>
+</div>
+</section>
+
+<!-- ADMIN -->
+<div id="adminBtn" onclick="openAdmin()">ADMIN</div>
+
+<div id="adminPanel">
+<h3>ADMIN PANEL</h3>
+<input type="password" id="pass" placeholder="Пароль">
+<button onclick="login()">Войти</button>
+
+<div id="panel" style="display:none;margin-top:10px">
+<p contenteditable="true">Редактируемый текст сайта</p>
+<button onclick="save()">Сохранить</button>
+</div>
+</div>
+
+<script>
+
+// FADE
+const obs=new IntersectionObserver(e=>{
+e.forEach(x=>{
+if(x.isIntersecting)x.target.classList.add("show");
+});
+});
+document.querySelectorAll(".fade").forEach(x=>obs.observe(x));
+
+// VOTE
+function vote(){
+localStorage.setItem("vote",JSON.stringify({
+fighter:fighter.value,
+style:style.value,
+team:team.value,
+challenge:challenge.value
+}));
+alert("Голос принят");
+}
+
+// SUBSCRIBE
+function subscribe(){
+localStorage.setItem("email",email.value);
+alert("Подписка оформлена");
+}
+
+// ADMIN
+function openAdmin(){
+adminPanel.style.display="block";
+}
+
+function login(){
+if(pass.value==="Dmitri1987"){
+panel.style.display="block";
+}
+}
+
+function save(){
+localStorage.setItem("site",document.body.innerHTML);
+alert("Сохранено");
+}
+
+// LOAD
+window.onload=()=>{
+let s=localStorage.getItem("site");
+if(s) document.body.innerHTML=s;
+}
+
+</script>
+
+</body>
+</html>
