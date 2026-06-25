@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ONE DAY OF FIGHTER PRO</title>
+<title>ONE DAY OF FIGHTER</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
 
@@ -14,6 +14,7 @@
 --gold:#ffd700;
 --card:rgba(255,255,255,0.06);
 --line:rgba(255,255,255,0.12);
+--orange:#ff5722;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
@@ -21,6 +22,7 @@ body{
 background:var(--bg);
 color:#fff;
 font-family:'Roboto Condensed',sans-serif;
+overflow-x:hidden;
 }
 
 /* HEADER */
@@ -32,8 +34,8 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:14px 22px;
-background:rgba(0,0,0,0.85);
-backdrop-filter: blur(10px);
+background:rgba(0,0,0,0.95);
+backdrop-filter:blur(10px);
 z-index:1000;
 border-bottom:1px solid var(--line);
 }
@@ -42,20 +44,35 @@ border-bottom:1px solid var(--line);
 font-family:'Oswald';
 font-weight:700;
 color:var(--red);
-letter-spacing:1px;
+letter-spacing:2px;
 cursor:pointer;
+font-size:18px;
+}
+
+.menu-toggle{
+display:none;
+background:none;
+border:1px solid var(--line);
+color:#fff;
+font-size:24px;
+cursor:pointer;
+padding:8px 12px;
+border-radius:8px;
+}
+
+nav{
+display:flex;
+gap:20px;
 }
 
 nav a{
 color:#fff;
-margin:0 12px;
 text-decoration:none;
 font-size:14px;
 opacity:0.8;
+transition:.3s;
 }
 nav a:hover{opacity:1;color:var(--gold)}
-
-.burger{display:none;cursor:pointer;font-size:26px}
 
 /* SECTIONS */
 section{
@@ -63,7 +80,7 @@ min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
-padding:100px 20px;
+padding:120px 20px;
 }
 
 .container{max-width:1100px;width:100%}
@@ -74,116 +91,227 @@ font-size:64px;
 text-align:center;
 color:var(--red);
 letter-spacing:2px;
+margin-bottom:20px;
 }
 
 h2{
 font-family:'Oswald';
-color:var(--gold);
-margin-bottom:20px;
+color:var(--orange);
+margin-bottom:30px;
 font-size:32px;
+text-transform:uppercase;
+letter-spacing:1px;
 }
 
-p{opacity:0.9;line-height:1.5}
+h3{
+font-family:'Oswald';
+color:#fff;
+margin:15px 0;
+font-size:20px;
+}
+
+p{opacity:0.9;line-height:1.6;margin-bottom:15px}
 
 /* HERO */
 .hero-box{text-align:center}
+
+.hero-subtitle{
+font-size:16px;
+opacity:0.8;
+margin-bottom:30px;
+}
 
 .badges{
 display:flex;
 gap:15px;
 justify-content:center;
 flex-wrap:wrap;
-margin-top:25px;
+margin:30px 0;
 }
 
 .badge{
 background:var(--card);
-padding:15px 18px;
+padding:15px 20px;
 border:1px solid var(--line);
 border-radius:12px;
 transition:.3s;
+font-size:14px;
 }
 .badge:hover{
 transform:translateY(-5px);
-box-shadow:0 0 20px rgba(255,32,64,0.4);
+box-shadow:0 0 20px rgba(255,80,62,0.4);
+border-color:var(--orange);
 }
 
-button{
+/* BUTTONS */
+button,.btn{
 background:var(--red);
 border:none;
-padding:12px 18px;
+padding:14px 28px;
 color:#fff;
 cursor:pointer;
-border-radius:10px;
+border-radius:8px;
 margin-top:20px;
 font-weight:600;
+font-size:14px;
+text-transform:uppercase;
+letter-spacing:1px;
+transition:.3s;
+display:inline-block;
+text-decoration:none;
 }
 
-button:hover{background:#ff4d66}
+button:hover,.btn:hover{
+background:var(--orange);
+transform:scale(1.05);
+}
+
+.btn-secondary{
+background:transparent;
+border:2px solid var(--line);
+color:#fff;
+}
+
+.btn-secondary:hover{
+border-color:var(--orange);
+background:rgba(255,87,34,0.1);
+}
 
 /* CARDS */
 .card{
 background:var(--card);
 border:1px solid var(--line);
-padding:16px;
+padding:20px;
 border-radius:12px;
-margin:10px 0;
+margin:15px 0;
 transition:.3s;
+cursor:pointer;
 }
+
 .card:hover{
 transform:scale(1.02);
-border-color:var(--red);
+border-color:var(--orange);
+box-shadow:0 0 20px rgba(255,87,34,0.2);
+}
+
+.card-icon{
+font-size:40px;
+margin-bottom:15px;
+}
+
+.card-title{
+font-family:'Oswald';
+font-size:18px;
+color:#fff;
+margin-bottom:10px;
 }
 
 /* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
 /* FORM */
-input,select{
+input,select,textarea{
 width:100%;
-padding:10px;
-margin:6px 0;
-background:#111;
-border:1px solid #333;
+padding:12px;
+margin:8px 0;
+background:#1a1a1a;
+border:1px solid var(--line);
 color:#fff;
 border-radius:8px;
+font-family:'Roboto Condensed',sans-serif;
+font-size:14px;
+transition:.3s;
 }
 
-/* TIMELINE */
-.timeline{
-border-left:2px solid var(--red);
-padding-left:20px;
-}
-.time-item{
-margin:20px 0;
-position:relative;
-}
-.time-item::before{
-content:"";
-position:absolute;
-left:-28px;
-width:12px;height:12px;
-background:var(--gold);
-border-radius:50%;
-top:5px;
+input:focus,select:focus,textarea:focus{
+outline:none;
+border-color:var(--orange);
+box-shadow:0 0 10px rgba(255,87,34,0.3);
 }
 
-/* VIDEO */
-.video-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px;
+textarea{
+resize:vertical;
+min-height:100px;
 }
 
-iframe{
-width:100%;
-height:200px;
+/* VOTING */
+.voting-card{
+background:var(--card);
+border:1px solid var(--line);
+padding:20px;
 border-radius:12px;
-border:none;
+margin:20px 0;
+}
+
+.vote-count{
+font-family:'Oswald';
+font-size:32px;
+color:var(--orange);
+font-weight:700;
+margin:15px 0;
+}
+
+.vote-description{
+opacity:0.8;
+font-size:14px;
+margin-bottom:20px;
+}
+
+/* VIDEOS */
+.video-item{
+background:var(--card);
+border:2px solid var(--line);
+border-radius:12px;
+overflow:hidden;
+margin:15px 0;
+transition:.3s;
+}
+
+.video-item:hover{
+border-color:var(--orange);
+transform:scale(1.02);
+}
+
+.video-placeholder{
+background:linear-gradient(135deg,#1a1a1a,#2a2a2a);
+height:200px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:60px;
+color:var(--orange);
+opacity:0.5;
+}
+
+.video-info{
+padding:15px;
+}
+
+.video-time{
+background:rgba(0,0,0,0.5);
+display:inline-block;
+padding:5px 10px;
+border-radius:6px;
+font-size:12px;
+margin-bottom:10px;
+}
+
+.video-title{
+font-family:'Oswald';
+font-size:18px;
+color:#fff;
+margin:10px 0;
+}
+
+.video-status{
+color:var(--orange);
+font-weight:600;
+font-size:12px;
+text-transform:uppercase;
 }
 
 /* FADE */
@@ -198,58 +326,206 @@ transform:translateY(0);
 }
 
 /* ADMIN */
-#adminBtn{
+.admin-btn{
 position:fixed;
 bottom:20px;
 right:20px;
-background:var(--gold);
-color:#000;
-padding:10px 14px;
-border-radius:50px;
-cursor:pointer;
+background:var(--orange);
+color:#fff;
+width:50px;
+height:50px;
+border-radius:50%;
+border:none;
 font-weight:bold;
+font-size:16px;
+cursor:pointer;
 z-index:2000;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 4px 15px rgba(255,87,34,0.4);
+transition:.3s;
 }
 
-#adminPanel{
+.admin-btn:hover{
+transform:scale(1.1);
+box-shadow:0 4px 25px rgba(255,87,34,0.6);
+}
+
+.modal{
 position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:#111;
-border:1px solid var(--red);
-padding:20px;
+top:0;left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
 display:none;
+align-items:center;
+justify-content:center;
 z-index:3000;
-width:320px;
-border-radius:12px;
 }
 
+.modal.show{
+display:flex;
+}
+
+.modal-content{
+background:#1a1a1a;
+border:2px solid var(--orange);
+padding:30px;
+border-radius:12px;
+width:90%;
+max-width:500px;
+max-height:80vh;
+overflow-y:auto;
+}
+
+.modal-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.modal-header h2{
+margin:0;
+}
+
+.close-btn{
+background:none;
+border:none;
+color:#fff;
+font-size:28px;
+cursor:pointer;
+padding:0;
+}
+
+.close-btn:hover{
+color:var(--orange);
+}
+
+.admin-section{
+margin:20px 0;
+padding:15px;
+background:rgba(255,87,34,0.05);
+border-left:3px solid var(--orange);
+border-radius:6px;
+}
+
+.admin-label{
+font-weight:600;
+margin-bottom:8px;
+display:block;
+color:var(--orange);
+}
+
+.admin-input{
+width:100%;
+padding:10px;
+margin:5px 0;
+background:#111;
+border:1px solid var(--line);
+color:#fff;
+border-radius:6px;
+font-size:13px;
+}
+
+.admin-input:focus{
+outline:none;
+border-color:var(--orange);
+}
+
+.admin-actions{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+
+.admin-actions button{
+flex:1;
+}
+
+/* RESPONSIVE */
 @media(max-width:768px){
 nav{display:none}
+
+.menu-toggle{
+display:block;
+}
+
+nav.mobile-show{
+position:absolute;
+top:60px;
+left:0;
+right:0;
+flex-direction:column;
+background:rgba(0,0,0,0.95);
+border-bottom:1px solid var(--line);
+padding:20px;
+gap:10px;
+display:flex;
+}
+
 h1{font-size:40px}
+h2{font-size:24px}
+
+section{
+padding:80px 15px;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.badges{
+flex-direction:column;
+}
+
+.badge{
+width:100%;
+text-align:center;
+}
+
+button,.btn{
+width:100%;
+}
+
+.modal-content{
+width:95%;
+padding:20px;
+}
+}
+
+@media(max-width:480px){
+h1{font-size:32px}
+h2{font-size:20px}
+section{padding:70px 10px}
+header{padding:10px 15px}
+.logo{font-size:14px}
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
-<div class="logo" ondblclick="openAdmin()">ONE DAY OF FIGHTER</div>
-<nav>
-<a href="#about">О проекте</a>
-<a href="#vote">Голосование</a>
-<a href="#day">День</a>
-<a href="#video">Видео</a>
-<a href="#final">Финал</a>
+<div class="logo">ODF</div>
+<nav id="nav">
+<a href="#hero">ГЛАВНАЯ</a>
+<a href="#about">О ПРОЕКТЕ</a>
+<a href="#mission">МИССИЯ</a>
+<a href="#voting">ГОЛОСОВАНИЕ</a>
+<a href="#videos">ВЫПУСКИ</a>
+<a href="#join">ПРИСОЕДИНИТЬСЯ</a>
 </nav>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
 </header>
 
 <!-- HERO -->
-<section class="fade">
+<section id="hero" class="fade">
 <div class="container hero-box">
-<h1 contenteditable="true">ONE DAY OF FIGHTER</h1>
-<p contenteditable="true">Один день из жизни профессионального бойца ММА</p>
+<h1>ONE DAY OF FIGHTER</h1>
+<p class="hero-subtitle" id="heroSubtitle">Один день из жизни профессионального бойца ММА</p>
 
 <div class="badges">
 <div class="badge">🎥 Реальные тренировки</div>
@@ -258,6 +534,7 @@ h1{font-size:40px}
 </div>
 
 <button onclick="alert('Переход к выпуску')">Смотреть последний выпуск</button>
+<button class="btn-secondary" onclick="document.getElementById('videos').scrollIntoView()">Все выпуски →</button>
 </div>
 </section>
 
@@ -265,7 +542,7 @@ h1{font-size:40px}
 <section id="about" class="fade">
 <div class="container">
 <h2>О проекте</h2>
-<p contenteditable="true">
+<p id="aboutText">
 ONE DAY OF FIGHTER — это погружение в жизнь профессиональных бойцов ММА.
 Каждый выпуск — новый спортсмен, новая школа и реальные тренировки без постановки.
 Цель проекта — показать настоящую работу бойца и стать сильнее самому.
@@ -273,142 +550,423 @@ ONE DAY OF FIGHTER — это погружение в жизнь професс�
 </div>
 </section>
 
-<!-- VOTE -->
-<section id="vote" class="fade">
+<!-- MISSION -->
+<section id="mission" class="fade">
 <div class="container">
-<h2>Выбор бойца</h2>
+<h2>🔥 TELEGRAM-FIRST MMA CHALLENGE</h2>
+<h1 style="font-size:48px;margin:20px 0">ONE DAY OF FIGHTER — НАЧИНАЕМ!</h1>
+<p id="missionText" style="font-size:16px;margin:20px 0">Это не просто проект. Это вызов самому себе.</p>
 
-<select id="fighter">
-<option>Хабиб Нурмагомедов</option>
-<option>Ислам Махачев</option>
-<option>Джон Джонс</option>
-<option>Конор МакГрегор</option>
-</select>
+<button onclick="document.getElementById('join').scrollIntoView()">Подписаться на канал →</button>
+<button class="btn-secondary" onclick="document.getElementById('videos').scrollIntoView()">Смотреть выпуски →</button>
 
-<select id="style">
-<option>Борьба</option>
-<option>Ударка</option>
-<option>ММА</option>
-</select>
+<div style="margin-top:40px;text-align:left">
+<h3>📋 МИССИЯ</h3>
+<p id="missionTitle" style="font-size:20px;color:var(--orange);font-weight:700">ОДИН ДЕНЬ ПО РЕЖИМУ ПРОФЕССИОНАЛЬНОГО БОЙЦА</p>
+<p id="missionDesc">Мы проживаем день как профессиональный боец ММА: утренний вес, функциональная работа, техника, спарринги, восстановление и честная камера без постановки. Зрители Telegram-канала выбирают, чей режим станет следующим испытанием.</p>
+</div>
 
-<select id="team">
-<option>AKA</option>
-<option>ATT</option>
-<option>AKA Thailand</option>
-</select>
-
-<select id="challenge">
-<option>Кардио ад</option>
-<option>Спарринги</option>
-<option>Техника до отказа</option>
-</select>
-
-<button onclick="vote()">Проголосовать</button>
+<div style="margin-top:40px">
+<div class="grid">
+<div class="card">
+<div class="card-icon">⚔️</div>
+<div class="card-title">Ты выбираешь бойца</div>
+</div>
+<div class="card">
+<div class="card-icon">💪</div>
+<div class="card-title">Я тренируюсь</div>
+</div>
+<div class="card">
+<div class="card-icon">🎬</div>
+<div class="card-title">Снимаем без постановки</div>
+</div>
+<div class="card">
+<div class="card-icon">🎯</div>
+<div class="card-title">Стать сильнее</div>
+</div>
+<div class="card">
+<div class="card-icon">🏆</div>
+<div class="card-title">Показать мир ММА изнутри</div>
+</div>
+<div class="card">
+<div class="card-icon">⚡</div>
+<div class="card-title">Вдохновить выходить из зоны комфорта</div>
+</div>
+</div>
 </div>
 </section>
 
-<!-- DAY -->
-<section id="day" class="fade">
+<!-- KEY BLOCK -->
+<section class="fade">
 <div class="container">
-<h2>День бойца</h2>
+<h2>КЛЮЧЕВОЙ БЛОК</h2>
+<p id="keyBlockText">Мы проживаем день как профессиональный боец ММА: утренний вес, функциональная работа, техника, спарринги, восстановление и честная камера без постановки.</p>
+</div>
+</section>
 
-<div class="timeline">
-<div class="time-item">06:00 — Кардио и весогонка</div>
-<div class="time-item">10:00 — Техника и борьба</div>
-<div class="time-item">15:00 — Спарринги</div>
-<div class="time-item">19:00 — Восстановление и интервью</div>
+<!-- VOTING -->
+<section id="voting" class="fade">
+<div class="container">
+<h2>ГОЛОСОВАНИЕ НЕДЕЛИ</h2>
+
+<div class="voting-card">
+<p style="color:var(--orange);text-transform:uppercase;font-weight:600">ГОЛОСОВАНИЕ НЕДЕЛИ</p>
+<h3 id="votingQuestion">Чей режим повторяем первым?</h3>
+<p id="votingDescription">Выбор недели решает Telegram-канал.</p>
+<div class="vote-count" id="voteCount">487</div>
+<button onclick="document.getElementById('join').scrollIntoView()">Проголосовать в канале</button>
 </div>
 </div>
 </section>
 
-<!-- VIDEO -->
-<section id="video" class="fade">
+<!-- VIDEOS -->
+<section id="videos" class="fade">
 <div class="container">
-<h2>Видео</h2>
+<h2>ВИДЕО ВЫПУСКИ</h2>
 
-<div class="video-grid">
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+<div class="grid" id="videosGrid">
+<!-- Видео будут загружены из admin panel -->
 </div>
 
+<div style="text-align:center;margin-top:30px">
 <button>Все выпуски</button>
 </div>
-</section>
-
-<!-- FINAL -->
-<section id="final" class="fade">
-<div class="container" style="text-align:center">
-<h2>Финал</h2>
-<p>Один день. Один боец. Один новый опыт.</p>
-
-<input id="email" placeholder="Email">
-<button onclick="subscribe()">Подписаться</button>
 </div>
 </section>
 
-<!-- ADMIN -->
-<div id="adminBtn" onclick="openAdmin()">ADMIN</div>
+<!-- JOIN TELEGRAM -->
+<section id="join" class="fade">
+<div class="container">
+<h2>ПРИСОЕДИНИСЬ В TELEGRAM</h2>
 
-<div id="adminPanel">
-<h3>ADMIN PANEL</h3>
-<input type="password" id="pass" placeholder="Пароль">
-<button onclick="login()">Войти</button>
+<div style="background:var(--card);border:1px solid var(--line);padding:30px;border-radius:12px;margin:30px 0">
+<div style="font-size:24px;margin-bottom:20px">🔔</div>
+<p style="font-size:16px;margin-bottom:30px">Подписывайтесь на канал, включайте уведомления и решайте, чей тренировочный день станет новым выпуском.</p>
+<button onclick="window.open('https://t.me/onedayoffighter','_blank')">Подписаться на @ONEDAYOFFIGHTER</button>
+</div>
 
-<div id="panel" style="display:none;margin-top:10px">
-<p contenteditable="true">Редактируемый текст сайта</p>
-<button onclick="save()">Сохранить</button>
+<div style="background:rgba(255,87,34,0.05);border:2px solid var(--line);padding:30px;border-radius:12px;margin:30px 0">
+<h3 style="margin-bottom:20px">Хотите предложить идею?</h3>
+<form id="contactForm">
+<label class="admin-label">Ваше имя</label>
+<input type="text" id="formName" placeholder="Введите ваше имя" required>
+
+<label class="admin-label">Telegram или Email</label>
+<input type="text" id="formContact" placeholder="@username или email" required>
+
+<label class="admin-label">Предложите бойца или идею выпуска</label>
+<textarea id="formIdea" placeholder="Ваша идея..." required></textarea>
+
+<button type="submit" style="width:100%">Отправить предложение</button>
+</form>
+</div>
+</section>
+
+<!-- ADMIN BUTTON -->
+<button class="admin-btn" onclick="openAdmin()">⚙️</button>
+
+<!-- ADMIN MODAL -->
+<div id="adminModal" class="modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2>ADMIN PANEL</h2>
+<button class="close-btn" onclick="closeAdmin()">&times;</button>
+</div>
+
+<div id="loginSection">
+<label class="admin-label">Пароль администратора</label>
+<input type="password" id="adminPassword" placeholder="Введите пароль" onkeypress="if(event.key==='Enter') loginAdmin()">
+<button onclick="loginAdmin()" style="width:100%;margin-top:10px">Войти</button>
+</div>
+
+<div id="adminPanel" style="display:none">
+<button onclick="closeAdmin()" style="width:100%;margin-bottom:20px">← Выйти</button>
+
+<!-- HERO SECTION -->
+<div class="admin-section">
+<h3>Герой секция</h3>
+<label class="admin-label">Подзаголовок</label>
+<input class="admin-input" type="text" id="editHeroSubtitle">
+
+<label class="admin-label">Кнопка "О проекте"</label>
+<input class="admin-input" type="text" value="О проекте">
+</div>
+
+<!-- ABOUT SECTION -->
+<div class="admin-section">
+<h3>О проекте</h3>
+<label class="admin-label">Описание</label>
+<textarea class="admin-input" id="editAboutText" style="min-height:100px"></textarea>
+</div>
+
+<!-- MISSION SECTION -->
+<div class="admin-section">
+<h3>Миссия</h3>
+<label class="admin-label">Заголовок</label>
+<input class="admin-input" type="text" id="editMissionText">
+
+<label class="admin-label">Описание миссии</label>
+<input class="admin-input" type="text" id="editMissionTitle">
+
+<label class="admin-label">Текст описания</label>
+<textarea class="admin-input" id="editMissionDesc" style="min-height:100px"></textarea>
+</div>
+
+<!-- KEY BLOCK -->
+<div class="admin-section">
+<h3>Ключевой блок</h3>
+<label class="admin-label">Текст блока</label>
+<textarea class="admin-input" id="editKeyBlockText" style="min-height:80px"></textarea>
+</div>
+
+<!-- VOTING SECTION -->
+<div class="admin-section">
+<h3>Голосование</h3>
+<label class="admin-label">Вопрос голосования</label>
+<input class="admin-input" type="text" id="editVotingQuestion">
+
+<label class="admin-label">Описание</label>
+<input class="admin-input" type="text" id="editVotingDescription">
+
+<label class="admin-label">Количество голосов</label>
+<input class="admin-input" type="number" id="editVoteCount">
+</div>
+
+<!-- VIDEOS SECTION -->
+<div class="admin-section">
+<h3>Видео выпуски</h3>
+<label class="admin-label">Видео 1 - Название</label>
+<input class="admin-input" type="text" id="editVideo1Title">
+
+<label class="admin-label">Видео 1 - Время</label>
+<input class="admin-input" type="text" id="editVideo1Time" placeholder="15 д. 11 ч.">
+
+<label class="admin-label">Видео 1 - Статус</label>
+<input class="admin-input" type="text" id="editVideo1Status" placeholder="СКОРО">
+
+<hr style="border-color:var(--line);margin:15px 0">
+
+<label class="admin-label">Видео 2 - Название</label>
+<input class="admin-input" type="text" id="editVideo2Title">
+
+<label class="admin-label">Видео 2 - Время</label>
+<input class="admin-input" type="text" id="editVideo2Time" placeholder="29 д. 11 ч.">
+
+<label class="admin-label">Видео 2 - Статус</label>
+<input class="admin-input" type="text" id="editVideo2Status" placeholder="СКОРО">
+</div>
+
+<!-- CONTACTS SECTION -->
+<div class="admin-section">
+<h3>Контакты</h3>
+<label class="admin-label">Telegram канал</label>
+<input class="admin-input" type="text" id="editTelegramChannel" placeholder="@onedayoffighter">
+
+<label class="admin-label">Telegram для связи (для redirect)</label>
+<input class="admin-input" type="text" id="editTelegramContact" placeholder="@zloypankrationists">
+</div>
+
+<div class="admin-actions">
+<button onclick="saveAdmin()" style="background:var(--orange)">💾 Сохранить</button>
+<button onclick="resetAdmin()" style="background:#666">↻ Сбросить</button>
+</div>
+</div>
 </div>
 </div>
 
 <script>
+// ===== DATA MANAGEMENT =====
+const defaultData = {
+heroSubtitle: 'Один день из жизни профессионального бойца ММА',
+aboutText: 'ONE DAY OF FIGHTER — это погружение в жизнь профессиональных бойцов ММА. Каждый выпуск — новый спортсмен, новая школа и реальные тренировки без постановки. Цель проекта — показать настоящую работу бойца и стать сильнее самому.',
+missionText: 'Это не просто проект. Это вызов самому себе.',
+missionTitle: 'ОДИН ДЕНЬ ПО РЕЖИМУ ПРОФЕССИОНАЛЬНОГО БОЙЦА',
+missionDesc: 'Мы проживаем день как профессиональный боец ММА: утренний вес, функциональная работа, техника, спарринги, восстановление и честная камера без постановки. Зрители Telegram-канала выбирают, чей режим станет следующим испытанием.',
+keyBlockText: 'Мы проживаем день как профессиональный боец ММ��: утренний вес, функциональная работа, техника, спарринги, восстановление и честная камера без постановки.',
+votingQuestion: 'Чей режим повторяем первым?',
+votingDescription: 'Выбор недели решает Telegram-канал.',
+voteCount: '487',
+video1Title: 'Пилот: день бойца без дублей',
+video1Time: '15 д. 11 ч.',
+video1Status: 'СКОРО',
+video2Title: 'Октагон начинается утром',
+video2Time: '29 д. 11 ч.',
+video2Status: 'СКОРО',
+telegramChannel: '@ONEDAYOFFIGHTER',
+telegramContact: '@zloypankrationists'
+};
 
-// FADE
-const obs=new IntersectionObserver(e=>{
-e.forEach(x=>{
-if(x.isIntersecting)x.target.classList.add("show");
+function loadData() {
+const saved = localStorage.getItem('odfData');
+return saved ? JSON.parse(saved) : defaultData;
+}
+
+function saveData(data) {
+localStorage.setItem('odfData', JSON.stringify(data));
+}
+
+function renderPage() {
+const data = loadData();
+
+document.getElementById('heroSubtitle').textContent = data.heroSubtitle;
+document.getElementById('aboutText').textContent = data.aboutText;
+document.getElementById('missionText').textContent = data.missionText;
+document.getElementById('missionTitle').textContent = data.missionTitle;
+document.getElementById('missionDesc').textContent = data.missionDesc;
+document.getElementById('keyBlockText').textContent = data.keyBlockText;
+document.getElementById('votingQuestion').textContent = data.votingQuestion;
+document.getElementById('votingDescription').textContent = data.votingDescription;
+document.getElementById('voteCount').textContent = data.voteCount;
+
+renderVideos(data);
+}
+
+function renderVideos(data) {
+const grid = document.getElementById('videosGrid');
+grid.innerHTML = '';
+
+const videos = [
+{ title: data.video1Title, time: data.video1Time, status: data.video1Status },
+{ title: data.video2Title, time: data.video2Time, status: data.video2Status }
+];
+
+videos.forEach((video, idx) => {
+const videoHTML = `
+<div class="video-item">
+<div class="video-placeholder">▶️</div>
+<div class="video-info">
+<div class="video-time">⏱ ${video.time}</div>
+<div class="video-title">${video.title}</div>
+<div class="video-status">${video.status}</div>
+</div>
+</div>
+`;
+grid.innerHTML += videoHTML;
+});
+}
+
+// ===== ADMIN FUNCTIONS =====
+function openAdmin() {
+document.getElementById('adminModal').classList.add('show');
+}
+
+function closeAdmin() {
+document.getElementById('adminModal').classList.remove('show');
+document.getElementById('loginSection').style.display = 'block';
+document.getElementById('adminPanel').style.display = 'none';
+document.getElementById('adminPassword').value = '';
+}
+
+function loginAdmin() {
+const password = document.getElementById('adminPassword').value;
+if (password === 'Dmitri1987') {
+document.getElementById('loginSection').style.display = 'none';
+document.getElementById('adminPanel').style.display = 'block';
+loadAdminForm();
+} else {
+alert('❌ Неверный пароль');
+}
+}
+
+function loadAdminForm() {
+const data = loadData();
+
+document.getElementById('editHeroSubtitle').value = data.heroSubtitle;
+document.getElementById('editAboutText').value = data.aboutText;
+document.getElementById('editMissionText').value = data.missionText;
+document.getElementById('editMissionTitle').value = data.missionTitle;
+document.getElementById('editMissionDesc').value = data.missionDesc;
+document.getElementById('editKeyBlockText').value = data.keyBlockText;
+document.getElementById('editVotingQuestion').value = data.votingQuestion;
+document.getElementById('editVotingDescription').value = data.votingDescription;
+document.getElementById('editVoteCount').value = data.voteCount;
+document.getElementById('editVideo1Title').value = data.video1Title;
+document.getElementById('editVideo1Time').value = data.video1Time;
+document.getElementById('editVideo1Status').value = data.video1Status;
+document.getElementById('editVideo2Title').value = data.video2Title;
+document.getElementById('editVideo2Time').value = data.video2Time;
+document.getElementById('editVideo2Status').value = data.video2Status;
+document.getElementById('editTelegramChannel').value = data.telegramChannel;
+document.getElementById('editTelegramContact').value = data.telegramContact;
+}
+
+function saveAdmin() {
+const data = {
+heroSubtitle: document.getElementById('editHeroSubtitle').value,
+aboutText: document.getElementById('editAboutText').value,
+missionText: document.getElementById('editMissionText').value,
+missionTitle: document.getElementById('editMissionTitle').value,
+missionDesc: document.getElementById('editMissionDesc').value,
+keyBlockText: document.getElementById('editKeyBlockText').value,
+votingQuestion: document.getElementById('editVotingQuestion').value,
+votingDescription: document.getElementById('editVotingDescription').value,
+voteCount: document.getElementById('editVoteCount').value,
+video1Title: document.getElementById('editVideo1Title').value,
+video1Time: document.getElementById('editVideo1Time').value,
+video1Status: document.getElementById('editVideo1Status').value,
+video2Title: document.getElementById('editVideo2Title').value,
+video2Time: document.getElementById('editVideo2Time').value,
+video2Status: document.getElementById('editVideo2Status').value,
+telegramChannel: document.getElementById('editTelegramChannel').value,
+telegramContact: document.getElementById('editTelegramContact').value
+};
+
+saveData(data);
+renderPage();
+alert('✅ Изменения сохранены!');
+closeAdmin();
+}
+
+function resetAdmin() {
+if (confirm('Сбросить все на стандартные значения?')) {
+localStorage.removeItem('odfData');
+renderPage();
+alert('✅ Данные сброшены!');
+loadAdminForm();
+}
+}
+
+// ===== FORM SUBMISSION =====
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+e.preventDefault();
+
+const name = document.getElementById('formName').value;
+const contact = document.getElementById('formContact').value;
+const idea = document.getElementById('formIdea').value;
+
+const data = loadData();
+const telegramUrl = `https://t.me/${data.telegramContact.replace('@','')}?start=${encodeURIComponent(`${name}|${contact}|${idea}`)}`;
+
+alert(`✅ Спасибо! Ваше предложение отправлено.\n\nОтправляем вас в Telegram...`);
+window.open(telegramUrl, '_blank');
+
+// Reset form
+document.getElementById('contactForm').reset();
+});
+
+// ===== MENU TOGGLE =====
+function toggleMenu() {
+const nav = document.getElementById('nav');
+nav.classList.toggle('mobile-show');
+}
+
+// Close menu on link click
+document.querySelectorAll('nav a').forEach(link => {
+link.addEventListener('click', () => {
+document.getElementById('nav').classList.remove('mobile-show');
 });
 });
-document.querySelectorAll(".fade").forEach(x=>obs.observe(x));
 
-// VOTE
-function vote(){
-localStorage.setItem("vote",JSON.stringify({
-fighter:fighter.value,
-style:style.value,
-team:team.value,
-challenge:challenge.value
-}));
-alert("Голос принят");
-}
+// ===== FADE ANIMATION =====
+const obs = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if (entry.isIntersecting) entry.target.classList.add('show');
+});
+});
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
 
-// SUBSCRIBE
-function subscribe(){
-localStorage.setItem("email",email.value);
-alert("Подписка оформлена");
-}
-
-// ADMIN
-function openAdmin(){
-adminPanel.style.display="block";
-}
-
-function login(){
-if(pass.value==="Dmitri1987"){
-panel.style.display="block";
-}
-}
-
-function save(){
-localStorage.setItem("site",document.body.innerHTML);
-alert("Сохранено");
-}
-
-// LOAD
-window.onload=()=>{
-let s=localStorage.getItem("site");
-if(s) document.body.innerHTML=s;
-}
-
+// ===== INIT =====
+renderPage();
 </script>
 
 </body>
